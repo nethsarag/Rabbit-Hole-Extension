@@ -5,6 +5,8 @@ const SCI_DEFAULTS = {
   autoNotInterested: false,
   hideShorts: true,
   injectEnabled: true,
+  infiniteFeed: true,   // endless feed for your topics (replaces the native home grid)
+  sort: "relevance",    // "relevance" or "date" (newest first)
   maxCards: 12,
   keywords: [
     "space","nasa","spacex","esa","isro","jwst","james webb","hubble","telescope","galaxy","galaxies",
@@ -20,6 +22,6 @@ const SCI_DEFAULTS = {
     "NASA","kurzgesagt","veritasium","pbsspacetime","SciShow","minutephysics",
     "numberphile","3blue1brown","Vsauce","scottmanley","EverydayAstronaut","whatdamath","universetoday"
   ],
-  // Topic searches, newest videos first. These discover channels you don't follow yet.
+  // Topics: ANY search phrase. The infinite feed pages through results for these as you scroll.
   searches: ["space news this week","astrophysics explained","new science discovery","James Webb telescope"]
 };

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Science & Space Feed",
-  "version": "2.1",
-  "description": "Filters your YouTube home feed to science and space, and injects fresh videos from science channels and topic searches.",
+  "name": "Rabbit Hole",
+  "version": "2.2",
+  "description": "Turns your YouTube home feed into an endless feed for any topic you choose.",
   "permissions": ["storage"],
   "content_scripts": [
     {
@@ -12,5 +12,5 @@
     }
   ],
   "background": { "service_worker": "background.js" },
-  "action": { "default_popup": "popup.html", "default_title": "Science & Space Feed" }
+  "action": { "default_popup": "popup.html", "default_title": "Rabbit Hole" }
 }
