@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Science & Space Feed",
+  "version": "2.1",
+  "description": "Filters your YouTube home feed to science and space, and injects fresh videos from science channels and topic searches.",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["defaults.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "Science & Space Feed" }
+}

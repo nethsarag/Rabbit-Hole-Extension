@@ -1,0 +1,49 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  body{font:13px system-ui,sans-serif;width:340px;padding:14px;margin:0}
+  h1{font-size:16px;margin:0 0 8px}
+  label{display:flex;align-items:center;gap:8px;margin:6px 0}
+  textarea{width:100%;height:56px;box-sizing:border-box;font:12px monospace}
+  .h{margin-top:8px;font-weight:600}
+  small{color:#666;display:block;margin:2px 0}
+  button{margin-top:10px;padding:6px 12px;cursor:pointer}
+  select,input[type=number]{margin-left:auto}
+  .top{display:flex;align-items:center;justify-content:space-between}
+  .top h1{margin:0}
+  .state{font-weight:600;margin:6px 0 10px}
+  .state.on{color:#1a7f37}.state.off{color:#888}
+  #body.off{opacity:.4;pointer-events:none}
+  .sw{position:relative;width:48px;height:26px;margin:0;display:inline-block;flex:none}
+  .sw input{opacity:0;width:0;height:0;position:absolute}
+  .slider{position:absolute;inset:0;background:#bbb;border-radius:26px;cursor:pointer;transition:.2s}
+  .slider:before{content:"";position:absolute;width:20px;height:20px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+  .sw input:checked + .slider{background:#1a7f37}
+  .sw input:checked + .slider:before{transform:translateX(22px)}
+</style></head>
+<body>
+  <div class="top">
+    <h1>Rabbit Hole &amp; Version 0.1</h1>
+    <label class="sw"><input type="checkbox" id="master"><span class="slider"></span></label>
+  </div>
+  <div id="state" class="state"></div>
+  <div id="body">
+  <label><input type="checkbox" id="filterFeed"> Filter home feed</label>
+  <label>Non-matching videos <select id="mode"><option value="hide">Hide</option><option value="dim">Dim</option></select></label>
+  <label><input type="checkbox" id="hideShorts"> Hide Shorts shelf</label>
+  <label><input type="checkbox" id="autoNotInterested"> Auto-click "Not interested"</label>
+  <label><input type="checkbox" id="injectEnabled"> Add fresh science videos on top</label>
+  <label>Number of videos <input type="number" id="maxCards" min="4" max="40" style="width:60px"></label>
+  <div class="h">Channels to pull from (@handles, comma separated)</div>
+  <textarea id="channels"></textarea>
+  <div class="h">Topic searches (finds new channels)</div>
+  <textarea id="searches"></textarea>
+  <div class="h">Keywords for filtering</div>
+  <textarea id="keywords" style="height:70px"></textarea>
+  <div class="h">Always block (channel or word)</div>
+  <textarea id="blocked" style="height:36px"></textarea>
+  <button id="save">Save</button> <button id="refresh">Refresh videos now</button> <span id="msg"></span>
+  </div>
+  <script src="defaults.js"></script>
+  <script src="popup.js"></script>
+</body></html>
