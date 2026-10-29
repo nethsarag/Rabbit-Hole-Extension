@@ -1,7 +1,4 @@
-const flags = ["infiniteFeed","filterFeed","hideShorts","autoNotInterested","injectEnabled"];
-const lists = { keywords:"keywords", blockedChannels:"blocked", channels:"channels", searches:"searches" };
 const $ = (id) => document.getElementById(id);
-const split = (t) => t.split(",").map((x) => x.trim().replace(/^@/, "")).filter(Boolean);
 const splitKeep = (t) => t.split(",").map((x) => x.trim()).filter(Boolean);
 
 function showState(on) {
@@ -18,20 +15,20 @@ $("master").onchange = () => {
 
 chrome.storage.sync.get(SCI_DEFAULTS, (v) => {
   showState(v.enabled);
-  flags.forEach((id) => ($(id).checked = v[id]));
-  $("mode").value = v.mode;
+  $("injectEnabled").checked = v.injectEnabled;
   $("sort").value = v.sort;
-  $("maxCards").value = v.maxCards;
-  for (const [key, id] of Object.entries(lists)) $(id).value = v[key].join(", ");
+  $("searches").value = v.searches.join(", ");
+  $("blocked").value = v.blockedChannels.join(", ");
 });
 
 $("save").onclick = () => {
-  const out = { mode: $("mode").value, sort: $("sort").value, maxCards: Math.max(4, Math.min(40, Number($("maxCards").value) || 12)) };
-  flags.forEach((id) => (out[id] = $(id).checked));
-  out.keywords = splitKeep($("keywords").value);
-  out.blockedChannels = splitKeep($("blocked").value);
-  out.channels = split($("channels").value);
-  out.searches = splitKeep($("searches").value);
+  const out = {
+    injectEnabled: $("injectEnabled").checked,
+    infiniteFeed: true,
+    sort: $("sort").value,
+    searches: splitKeep($("searches").value),
+    blockedChannels: splitKeep($("blocked").value)
+  };
   chrome.storage.sync.set(out, () => { $("msg").textContent = "Saved ✓"; setTimeout(() => ($("msg").textContent = ""), 1500); });
 };
 $("refresh").onclick = () => {

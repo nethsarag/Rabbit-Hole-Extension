@@ -5,7 +5,7 @@ const SCI_DEFAULTS = {
   autoNotInterested: false,
   hideShorts: true,
   injectEnabled: true,
-  infiniteFeed: true,   // endless feed for your topics (replaces the native home grid)
+  infiniteFeed: true,   // always on: the infinite feed replaces the native home grid
   sort: "relevance",    // "relevance" or "date" (newest first)
   maxCards: 12,
   keywords: [

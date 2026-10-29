@@ -28,20 +28,10 @@
   </div>
   <div id="state" class="state"></div>
   <div id="body">
-  <label><input type="checkbox" id="infiniteFeed"> Infinite topic feed (replaces home feed)</label>
+  <label><input type="checkbox" id="injectEnabled"> Show infinite topic feed on the home page</label>
   <label>Order <select id="sort"><option value="relevance">Most relevant</option><option value="date">Newest first</option></select></label>
   <div class="h">Topics (any subject, comma separated)</div>
-  <textarea id="searches"></textarea>
-  <label><input type="checkbox" id="filterFeed"> Filter home feed (classic mode only)</label>
-  <label>Non-matching videos <select id="mode"><option value="hide">Hide</option><option value="dim">Dim</option></select></label>
-  <label><input type="checkbox" id="hideShorts"> Hide Shorts shelf</label>
-  <label><input type="checkbox" id="autoNotInterested"> Auto-click "Not interested"</label>
-  <label><input type="checkbox" id="injectEnabled"> Show topic videos on the home page</label>
-  <label>Number of videos (classic mode) <input type="number" id="maxCards" min="4" max="40" style="width:60px"></label>
-  <div class="h">Channels to pull from (classic mode only)</div>
-  <textarea id="channels"></textarea>
-  <div class="h">Keywords for filtering (classic mode only)</div>
-  <textarea id="keywords" style="height:70px"></textarea>
+  <textarea id="searches" style="height:70px"></textarea>
   <div class="h">Always block (channel or word)</div>
   <textarea id="blocked" style="height:36px"></textarea>
   <button id="save">Save</button> <button id="refresh">Refresh videos now</button> <span id="msg"></span>

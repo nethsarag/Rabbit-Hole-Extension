@@ -409,16 +409,7 @@ function ensureInfinite(host) {
 async function ensureSection() {
   const host = document.getElementById(HOST_ID);
   if (!settings.enabled || !onHome() || !settings.injectEnabled) { host && host.remove(); showNative(true); return; }
-  if (settings.infiniteFeed) { ensureInfinite(host); return; }
-  showNative(true);
-  if (host || loadingSection) return;
-  if (!document.querySelector("ytd-rich-grid-renderer")) return;
-  loadingSection = true;
-  try {
-    if (!currentVideos) currentVideos = await getVideos();
-    if (onHome() && currentVideos.length) render(currentVideos);
-  } catch (e) { console.warn("Rabbit Hole:", e); }
-  loadingSection = false;
+  ensureInfinite(host);
 }
 
 /* ---------- wiring ---------- */
@@ -433,7 +424,7 @@ function cleanup() {
 function scan() {
   if (!settings.enabled) { cleanup(); return; }
   ensureSection();
-  if (!onHome() || !settings.filterFeed || settings.infiniteFeed) return; // infinite mode replaces the native feed
+  return; // the infinite feed replaces the native home feed, so there is nothing to filter
   document.querySelectorAll("ytd-rich-item-renderer").forEach((el) => { if (!el.dataset.sciChecked) apply(el); });
   if (settings.hideShorts) document.querySelectorAll("ytd-rich-section-renderer").forEach((el) => { el.style.display = "none"; });
 }
